@@ -9,7 +9,7 @@
       "web"
     ],
     "splash": {
-      "image": "./assets/restaurants.png",
+      "image": "./assets/airplane.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     }
