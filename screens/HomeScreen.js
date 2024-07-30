@@ -22,7 +22,7 @@ const HomeScreen = () => {
           <Image
             source={Airplane}
             title="Travel icons created by Freepik - Flaticon"
-            className="w-20 h-20 items-center justify-center rounded-full bg-[#00BCC9] px-10"
+            className="w-20 h-20 items-center justify-center  bg-transparent px-10"
           />
         </View>
         <Text className="text[#2A2B4B] text-3xl font-semibold">Traveller</Text>
