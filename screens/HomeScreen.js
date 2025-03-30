@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { default as HerosImage } from '../assets/heros.png'
 import * as Animatable from 'react-native-animatable'
-import { default as Airplane } from '../assets/airplane.png'
+import Airplane from '../assets/airplane.png'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
@@ -22,7 +22,8 @@ const HomeScreen = () => {
           <Image
             source={Airplane}
             title="Travel icons created by Freepik - Flaticon"
-            className="w-20 h-20 items-center justify-center  bg-transparent px-10"
+            // className="w-20 h-20 items-center justify-center  bg-transparent px-10"
+            style={{ width: 80, height: 80 }}
           />
         </View>
         <Text className="text[#2A2B4B] text-3xl font-semibold">Traveller</Text>

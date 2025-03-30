@@ -5,6 +5,7 @@
     "description": "This is an app for travellers around the world",
     "version": "1.0.0",
     "icon": "./assets/airplane.png",
+    "newArchEnabled": true,
     "platforms": [
       "ios",
       "android",
