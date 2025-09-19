@@ -59,6 +59,8 @@ const Discover = () => {
     })
   }, [bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType])
 
+  console.log('Google API key in use:', I_AM_TRAVELLER)
+
   return (
     <SafeAreaView>
       <View className="flex-row items-center justify-between px-8">
@@ -97,15 +99,17 @@ const Discover = () => {
             onBlur: () => console.log('Input blurred'),
             }}
             styles={{
-            container: { flex: 0 }, // 👈 prevent crash
-            textInput: {
-            height: 44,
-            borderRadius: 5,
-            paddingHorizontal: 10,
-            backgroundColor: '#fff',
-            },
-            listView: { backgroundColor: '#fff' },
-  }}
+              container: { flex: 1 }, // 👈 prevent crash
+            // textInput: {
+            //   height: 44,
+            //   borderRadius: 5,
+            //   paddingHorizontal: 10,
+            //   backgroundColor: '#fff',
+            //   // flex: 1,          // ✅ allow input to grow
+            //   color: '#000',    // optional: makes text readable
+            // },
+            // listView: { backgroundColor: '#fff' },
+            }}
           />
         </View>
         <ScrollView>
