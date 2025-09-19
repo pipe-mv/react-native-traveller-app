@@ -1,4 +1,5 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { default as HerosImage } from '../assets/heros.png'

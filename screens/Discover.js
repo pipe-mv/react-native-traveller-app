@@ -3,7 +3,6 @@ import React, { useEffect, useLayoutEffect, useState } from 'react'
 import {
   Text,
   View,
-  SafeAreaView,
   Image,
   ScrollView,
   TouchableOpacity,
@@ -11,14 +10,16 @@ import {
   FlatList,
   Alert,
 } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { default as NotFound } from '../assets/NotFound.png'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import MenuContainer from '../components/MenuContainer'
 import { FontAwesome } from '@expo/vector-icons'
 import ItemCardContainer from '../components/ItemCardContainer'
 import { getPlacesData } from '../api'
+// import { I_AM_TRAVELLER } from '@env'
 
-const I_AM_TRAVELLER = process.env.I_AM_TRAVELLER
+const I_AM_TRAVELLER = process.env.EXPO_PUBLIC_I_AM_TRAVELLER
 
 const randomnumber = Math.floor(Math.random() * 100)
 const avatar = `https://randomuser.me/api/portraits/women/${randomnumber}.jpg`
@@ -73,10 +74,13 @@ const Discover = () => {
         <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg">
           <GooglePlacesAutocomplete
             placeholder="Search"
-            GooglePlacesDetailsQuery={{ fields: 'geometry' }}
+            GooglePlacesDetailsQuery={{ fields: ['geometry'] }}
             fetchDetails={true}
+            minLength={2}
+            predefinedPlaces={[]}   // ✅ avoids filter on undefined
+            debounce={200}
             onFail={(error) => console.error(error)}
-            onPress={(data, details = true) => {
+            onPress={(data, details = null) => {
               // 'details' is provided when fetchDetails = true
               setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat)
               setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng)
@@ -87,6 +91,21 @@ const Discover = () => {
               key: I_AM_TRAVELLER,
               language: 'en',
             }}
+            textInputProps={{
+            placeholderTextColor: '#999',
+            onFocus: () => console.log('Input focused'),
+            onBlur: () => console.log('Input blurred'),
+            }}
+            styles={{
+            container: { flex: 0 }, // 👈 prevent crash
+            textInput: {
+            height: 44,
+            borderRadius: 5,
+            paddingHorizontal: 10,
+            backgroundColor: '#fff',
+            },
+            listView: { backgroundColor: '#fff' },
+  }}
           />
         </View>
         <ScrollView>
@@ -114,7 +133,7 @@ This area is in developing!`)
         <View className="">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
-      ) : mainData.length > 0 ? (
+      ) : Array.isArray(mainData) && mainData.length > 0 ? (
         <FlatList
           numColumns={2}
           data={mainData}

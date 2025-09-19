@@ -7,8 +7,8 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  SafeAreaView,
 } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome, FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
 import ItemMarketInfo from '../components/ItemMarketInfo'
 import ItemBooking from '../components/ItemBooking'

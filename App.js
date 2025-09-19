@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
