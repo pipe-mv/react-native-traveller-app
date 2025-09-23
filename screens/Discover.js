@@ -70,7 +70,7 @@ const Discover = () => {
         </View>
       </View>
       <View>
-        <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg">
+        <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg z-50">
           <GooglePlacesAutocomplete
             placeholder="Search"
             GooglePlacesDetailsQuery={{ fields: ['geometry'] }}
@@ -79,7 +79,7 @@ const Discover = () => {
             predefinedPlaces={[]}   // ✅ avoids filter on undefined
             debounce={200}
             onFail={(error) => console.error(error)}
-            onPress={(data, details) => {
+            onPress={(data, details = true) => {
               // 'details' is provided when fetchDetails = true
               setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat)
               setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng)
@@ -91,12 +91,13 @@ const Discover = () => {
               language: 'en',
             }}
             textInputProps={{
-            placeholderTextColor: '#999',
-            onFocus: () => console.log('Input focused'),
-            onBlur: () => console.log('Input blurred'),
+              placeholderTextColor: '#999',
+              onFocus: () => console.log('Input focused'),
+              onBlur: () => console.log('Input blurred'),
             }}
+            enablePoweredByContainer={false}
             styles={{
-              container: { flex: 1 }, // 👈 prevent crash
+              container: { flex: 1, zIndex: 10 },
             }}
           />
         </View>
