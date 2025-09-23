@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import {
   Text,
   View,
@@ -17,7 +17,6 @@ import MenuContainer from '../components/MenuContainer'
 import { FontAwesome } from '@expo/vector-icons'
 import ItemCardContainer from '../components/ItemCardContainer'
 import { getPlacesData } from '../api'
-// import { I_AM_TRAVELLER } from '@env'
 
 const I_AM_TRAVELLER = process.env.EXPO_PUBLIC_I_AM_TRAVELLER
 
@@ -59,8 +58,6 @@ const Discover = () => {
     })
   }, [bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType])
 
-  console.log('Google API key in use:', I_AM_TRAVELLER)
-
   return (
     <SafeAreaView>
       <View className="flex-row items-center justify-between px-8">
@@ -100,20 +97,10 @@ const Discover = () => {
             }}
             styles={{
               container: { flex: 1 }, // 👈 prevent crash
-            // textInput: {
-            //   height: 44,
-            //   borderRadius: 5,
-            //   paddingHorizontal: 10,
-            //   backgroundColor: '#fff',
-            //   // flex: 1,          // ✅ allow input to grow
-            //   color: '#000',    // optional: makes text readable
-            // },
-            // listView: { backgroundColor: '#fff' },
             }}
           />
         </View>
         <ScrollView>
-          {/* <View className="flex-row items-center justify-between px-4 mt-8"> */}
           <View>
             <MenuContainer setSearchType={setSearchType} />
           </View>
@@ -121,8 +108,7 @@ const Discover = () => {
             <Text className="text-[#2C7379] text-[28px] font-bold">Top Tips</Text>
             <TouchableOpacity
               onPress={() =>
-                Alert.alert(`Hold on!
-This area is in developing!`)
+                Alert.alert(`Hold on! This area is in developing!`)
               }
               className="flex-row items-center justify-center space-x-2"
             >

@@ -4,12 +4,11 @@ import {
   View,
   Text,
   ScrollView,
-  StyleSheet,
   Image,
   TouchableOpacity,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { FontAwesome, FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
+import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
 import ItemMarketInfo from '../components/ItemMarketInfo'
 import ItemBooking from '../components/ItemBooking'
 
@@ -58,7 +57,6 @@ const ItemScreen = ({ route }) => {
           </View>
           <View className="absolute flex-row inset-x-0 bottom-5 items-center justify-between px-6">
             <View className="flex-row space-x-2 items-center">
-              {/* <Text className="text-[12px] text-gray-100 font-bold">{price_level}</Text> */}
               {price ? (
                 <Text className="text-[32px] text-gray-100 font-bold">{price}</Text>
               ) : (

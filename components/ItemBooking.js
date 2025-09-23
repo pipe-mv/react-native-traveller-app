@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native'
-import React from 'react'
 import { FontAwesome5 } from '@expo/vector-icons'
 
 export default function ItemBooking({ email, phone, address }) {

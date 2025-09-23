@@ -1,5 +1,4 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
 import { default as Hotels } from '../assets/hotels.png'
 import { default as Attractions } from '../assets/fair.png'
 import { default as Restaurants } from '../assets/icon-restaurants.png'
