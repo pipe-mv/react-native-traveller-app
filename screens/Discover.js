@@ -79,7 +79,7 @@ const Discover = () => {
             predefinedPlaces={[]}   // ✅ avoids filter on undefined
             debounce={200}
             onFail={(error) => console.error(error)}
-            onPress={(data, details = null) => {
+            onPress={(data, details) => {
               // 'details' is provided when fetchDetails = true
               setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat)
               setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng)
@@ -100,7 +100,7 @@ const Discover = () => {
             }}
           />
         </View>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <View>
             <MenuContainer setSearchType={setSearchType} />
           </View>

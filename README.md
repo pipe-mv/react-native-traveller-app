@@ -41,7 +41,7 @@ You just need to scam this QR Code on your phone and it will take you to the App
 Then You need to scam the next QR Code and it will take you to the Expo Go application where you can explore and interact with the Traveller application and all the features that the application offers.
 
 <p align="center" gap='20px'>
-<img src='./assets/MarkDown/TravellerApp-QR-Code.png' width=200 >
+<img src='./assets/MarkDown/TravellerApp-QR-Code.svg' width=200 >
 </p>
 
 ### "Notes"
