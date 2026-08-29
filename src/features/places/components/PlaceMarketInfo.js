@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 
-export default function ItemMarketInfo({ rating, price_level, bearing }) {
+export default function PlaceMarketInfo({ rating, price_level, bearing }) {
   return (
     <View className="flex-row pt-6 justify-between">
       <View className="flex-row items-center space-x-2 ">

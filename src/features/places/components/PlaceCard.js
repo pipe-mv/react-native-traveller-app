@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { FontAwesome6 } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default function ItemCardContainer({ cardData, index }) {
+export default function PlaceCard({ cardData, index }) {
 
   const image = cardData?.photo?.images?.medium?.url
     ? cardData?.photo?.images?.medium?.url

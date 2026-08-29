@@ -2,9 +2,9 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { default as HerosImage } from '../assets/heros.png'
+import { default as HerosImage } from '../../../../assets/heros.png'
 import * as Animatable from 'react-native-animatable'
-import Airplane from '../assets/airplane.png'
+import Airplane from '../../../../assets/airplane.png'
 
 const HomeScreen = () => {
   const navigation = useNavigation()

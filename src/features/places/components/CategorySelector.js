@@ -1,9 +1,9 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { default as Hotels } from '../assets/hotels.png'
-import { default as Attractions } from '../assets/fair.png'
-import { default as Restaurants } from '../assets/icon-restaurants.png'
+import { default as Hotels } from '../../../../assets/hotels.png'
+import { default as Attractions } from '../../../../assets/fair.png'
+import { default as Restaurants } from '../../../../assets/icon-restaurants.png'
 
-export default function MenuContainer({ setSearchType }) {
+export default function CategorySelector({ setSearchType }) {
   const handlePress = (type) => {
     setSearchType(type)
   }

@@ -9,10 +9,10 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
-import ItemMarketInfo from '../components/ItemMarketInfo'
-import ItemBooking from '../components/ItemBooking'
+import PlaceMarketInfo from '../components/PlaceMarketInfo'
+import PlaceBookingDetails from '../components/PlaceBookingDetails'
 
-const ItemScreen = ({ route }) => {
+const PlaceDetailsScreen = ({ route }) => {
   const navigation = useNavigation()
   const { param: cardData, index } = route?.params
   const image = cardData?.photo?.images?.medium?.url
@@ -78,7 +78,7 @@ const ItemScreen = ({ route }) => {
             </Text>
           </View>
         </View>
-        <ItemMarketInfo rating={rating} price_level={price_level} bearing={bearing} />
+        <PlaceMarketInfo rating={rating} price_level={price_level} bearing={bearing} />
         {description && (
           <Text className="tracking-wide text-[16px] font-semibold text-[#97A6AF] pt-6">
             {description}
@@ -93,10 +93,10 @@ const ItemScreen = ({ route }) => {
             ))}
           </View>
         )}
-        <ItemBooking email={email} phone={phone} address={address} />
+        <PlaceBookingDetails email={email} phone={phone} address={address} />
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-export default ItemScreen
+export default PlaceDetailsScreen
