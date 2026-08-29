@@ -60,9 +60,10 @@ buck-out/
 /ios/Pods/
 
 # Expo
-.expo/*
+.expo/
 web-build/
 dist/
 
 #api
 .env
+src/assets/client_secret*.json
