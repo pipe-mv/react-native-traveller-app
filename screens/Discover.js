@@ -36,7 +36,7 @@ const Discover = () => {
   //   If there are changes in the UI it re-renders the entire UI
   useLayoutEffect(() => {
     navigation.setOptions({
-      headershow: false,
+      headerShown: false,
     })
   }, [])
 
@@ -79,8 +79,11 @@ const Discover = () => {
             predefinedPlaces={[]}   // ✅ avoids filter on undefined
             debounce={200}
             onFail={(error) => console.error(error)}
-            onPress={(data, details = true) => {
+            onPress={(data, details) => {
               // 'details' is provided when fetchDetails = true
+              console.log('Selected place:', data)
+              console.log('Details:', details) // this now contains the geometry
+
               setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat)
               setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng)
               setTopRightLatitud(details?.geometry?.viewport?.northeast?.lat)
@@ -99,6 +102,7 @@ const Discover = () => {
             styles={{
               container: { flex: 1, zIndex: 10 },
             }}
+            // suppressDefaultStyles
           />
         </View>
         <ScrollView keyboardShouldPersistTaps="always">
