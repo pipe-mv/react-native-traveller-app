@@ -17,8 +17,7 @@ import CategorySelector from '../components/CategorySelector'
 import { FontAwesome } from '@expo/vector-icons'
 import PlaceCard from '../components/PlaceCard'
 import { getPlacesData } from '../api/placesApi'
-
-const I_AM_TRAVELLER = process.env.EXPO_PUBLIC_I_AM_TRAVELLER
+import { EXPO_PUBLIC_I_AM_TRAVELLER as I_AM_TRAVELLER } from '@env'
 
 const randomnumber = Math.floor(Math.random() * 100)
 const avatar = `https://randomuser.me/api/portraits/women/${randomnumber}.jpg`
