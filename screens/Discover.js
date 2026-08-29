@@ -85,11 +85,12 @@ const Discover = () => {
         </View>
       </View>
       <View>
-        <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg z-50">
+        <View className="bg-white rounded-xl mx-4 py-1 px-4 shadow-lg z-50">
           <GooglePlacesAutocomplete
             placeholder="Search"
             GooglePlacesDetailsQuery={{ fields: ['geometry'] }}
             fetchDetails={true}
+            keyboardShouldPersistTaps="always"
             minLength={2}
             predefinedPlaces={[]}   // ✅ avoids filter on undefined
             debounce={200}
@@ -115,7 +116,8 @@ const Discover = () => {
             }}
             enablePoweredByContainer={false}
             styles={{
-              container: { flex: 1, zIndex: 10 },
+              container: { flex: 0, zIndex: 10 },
+              listView: { zIndex: 20, elevation: 5 },
             }}
             // suppressDefaultStyles
           />
