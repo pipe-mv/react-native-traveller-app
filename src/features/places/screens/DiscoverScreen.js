@@ -11,19 +11,19 @@ import {
   Alert,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { default as NotFound } from '../assets/NotFound.png'
+import { default as NotFound } from '../../../../assets/NotFound.png'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
-import MenuContainer from '../components/MenuContainer'
+import CategorySelector from '../components/CategorySelector'
 import { FontAwesome } from '@expo/vector-icons'
-import ItemCardContainer from '../components/ItemCardContainer'
-import { getPlacesData } from '../api'
+import PlaceCard from '../components/PlaceCard'
+import { getPlacesData } from '../api/placesApi'
 
 const I_AM_TRAVELLER = process.env.EXPO_PUBLIC_I_AM_TRAVELLER
 
 const randomnumber = Math.floor(Math.random() * 100)
 const avatar = `https://randomuser.me/api/portraits/women/${randomnumber}.jpg`
 
-const Discover = () => {
+const DiscoverScreen = () => {
   const navigation = useNavigation()
   const [isLoading, setIsLoading] = useState(false)
   const [mainData, setMainData] = useState([])
@@ -124,7 +124,7 @@ const Discover = () => {
         </View>
         <ScrollView keyboardShouldPersistTaps="always">
           <View>
-            <MenuContainer setSearchType={setSearchType} />
+            <CategorySelector setSearchType={setSearchType} />
           </View>
           <View className="flex-row items-center justify-around px-4 pb-4 mt-6">
             <Text className="text-[#2C7379] text-[28px] font-bold">Top Tips</Text>
@@ -150,7 +150,7 @@ const Discover = () => {
           numColumns={2}
           data={mainData}
           keyExtractor={(mainData) => mainData.location_id}
-          renderItem={({ item, index }) => <ItemCardContainer cardData={item} index={index} />}
+          renderItem={({ item, index }) => <PlaceCard cardData={item} index={index} />}
         />
       ) : (
         <>
@@ -164,4 +164,4 @@ const Discover = () => {
   )
 }
 
-export default Discover
+export default DiscoverScreen

@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
-export default function ItemBooking({ email, phone, address }) {
+export default function PlaceBookingDetails({ email, phone, address }) {
   return (
     <View className="bg-gray-200 rounded-xl space-y-2 justify-items-center mt-6 px-4 pt-4 ">
       {phone && (
