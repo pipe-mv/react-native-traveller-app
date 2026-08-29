@@ -36,7 +36,7 @@ const Discover = () => {
   //   If there are changes in the UI it re-renders the entire UI
   useLayoutEffect(() => {
     navigation.setOptions({
-      headershow: false,
+      headerShown: false,
     })
   }, [])
 
@@ -70,7 +70,7 @@ const Discover = () => {
         </View>
       </View>
       <View>
-        <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg">
+        <View className="flex-row items-center bg-white justify-center rounded-xl mx-4 py-1 px-4 shadow-lg z-50">
           <GooglePlacesAutocomplete
             placeholder="Search"
             GooglePlacesDetailsQuery={{ fields: ['geometry'] }}
@@ -81,6 +81,9 @@ const Discover = () => {
             onFail={(error) => console.error(error)}
             onPress={(data, details) => {
               // 'details' is provided when fetchDetails = true
+              console.log('Selected place:', data)
+              console.log('Details:', details) // this now contains the geometry
+
               setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat)
               setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng)
               setTopRightLatitud(details?.geometry?.viewport?.northeast?.lat)
@@ -91,13 +94,15 @@ const Discover = () => {
               language: 'en',
             }}
             textInputProps={{
-            placeholderTextColor: '#999',
-            onFocus: () => console.log('Input focused'),
-            onBlur: () => console.log('Input blurred'),
+              placeholderTextColor: '#999',
+              onFocus: () => console.log('Input focused'),
+              onBlur: () => console.log('Input blurred'),
             }}
+            enablePoweredByContainer={false}
             styles={{
-              container: { flex: 1 }, // 👈 prevent crash
+              container: { flex: 1, zIndex: 10 },
             }}
+            // suppressDefaultStyles
           />
         </View>
         <ScrollView keyboardShouldPersistTaps="always">
