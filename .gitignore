@@ -62,6 +62,7 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+dist/
 
 #api
 .env
