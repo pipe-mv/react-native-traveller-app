@@ -42,20 +42,35 @@ const Discover = () => {
 
   //   Re-render the component once it changes
   useEffect(() => {
-    setIsLoading(true)
-    getPlacesData(
-      bottomLeftLatitude,
-      bottomLeftLongitude,
-      topRightLatitude,
-      topRightLongitude,
-      searchType
-    ).then((data) => {
-      setMainData(data)
+    let isActive = true
 
-      setInterval(() => {
-        setIsLoading(false)
-      }, 2000)
-    })
+    const loadPlaces = async () => {
+      setIsLoading(true)
+
+      try {
+        const data = await getPlacesData(
+          bottomLeftLatitude,
+          bottomLeftLongitude,
+          topRightLatitude,
+          topRightLongitude,
+          searchType
+        )
+
+        if (isActive) {
+          setMainData(Array.isArray(data) ? data : [])
+        }
+      } finally {
+        if (isActive) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadPlaces()
+
+    return () => {
+      isActive = false
+    }
   }, [bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType])
 
   return (
