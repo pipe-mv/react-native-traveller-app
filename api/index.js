@@ -41,7 +41,7 @@ export const getPlacesData = async (
     const {
       data: { data },
     } = await axios.request(
-      options(topRightLatitude, topRightLongitude, bottomLeftLatitude, bottomLeftLongitude, searchType)
+      options(bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType)
     )
     // console.log('api',data)
     return data
