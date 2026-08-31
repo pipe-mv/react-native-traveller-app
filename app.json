@@ -3,9 +3,8 @@
     "name": "Traveller App",
     "slug": "traveller-app",
     "description": "This is an app for travellers around the world",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icon": "./assets/airplane.png",
-    "newArchEnabled": true,
     "platforms": [
       "ios",
       "android",
@@ -29,6 +28,9 @@
       "url": "https://u.expo.dev/99624b3a-da17-4a69-9f18-dfd98d6da705"
     },
     "android": {},
-    "ios": {}
+    "ios": {},
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
