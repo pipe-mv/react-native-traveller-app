@@ -148,7 +148,7 @@ const DiscoverScreen = () => {
         <FlatList
           numColumns={2}
           data={mainData}
-          keyExtractor={(mainData) => mainData.location_id}
+          keyExtractor={(place, index) => `${place.location_id ?? 'place'}-${index}`}
           renderItem={({ item, index }) => <PlaceCard cardData={item} index={index} />}
         />
       ) : (
