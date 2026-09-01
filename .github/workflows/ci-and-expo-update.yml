@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check TypeScript
+        run: npm run typecheck
+
       - name: Guard native runtime version
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
