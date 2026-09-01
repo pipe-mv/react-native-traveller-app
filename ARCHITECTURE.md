@@ -19,7 +19,8 @@ files. Expo Router remains a possible future improvement.
 └── src/
     ├── app/
     │   └── navigation/
-    │       └── RootNavigator.js
+    │       ├── RootNavigator.js
+    │       └── types.ts
     └── features/
         ├── home/
         │   └── screens/
@@ -30,8 +31,10 @@ files. Expo Router remains a possible future improvement.
             ├── components/
             │   ├── CategorySelector.tsx
             │   ├── PlaceBookingDetails.tsx
-            │   ├── PlaceCard.js
+            │   ├── PlaceCard.tsx
             │   └── PlaceMarketInfo.tsx
+            ├── types/
+            │   └── place.ts
             └── screens/
                 ├── DiscoverScreen.js
                 └── PlaceDetailsScreen.js
