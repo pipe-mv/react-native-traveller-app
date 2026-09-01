@@ -46,7 +46,7 @@ const PlaceDetailsScreen = ({ route }) => {
           <Image src={image} className="w-full h-72 rounded-2xl" />
           <View className="absolute flex-row inset-x-0 top-5 justify-between px-6">
             <TouchableOpacity
-              onPress={() => navigation.navigate('Discover')}
+              onPress={() => navigation.popTo('Discover')}
               className="bg-white w-10 h-10  justify-center items-center rounded-md"
             >
               <FontAwesome6 name="chevron-left" size={24} color="#06B2BE" />
