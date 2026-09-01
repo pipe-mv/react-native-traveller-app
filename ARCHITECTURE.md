@@ -14,7 +14,7 @@ files. Expo Router remains a possible future improvement.
 
 ```text
 .
-├── App.js
+├── App.tsx
 ├── assets/
 └── src/
     ├── app/
@@ -44,7 +44,7 @@ files. Expo Router remains a possible future improvement.
 
 ### Application entry point
 
-`App.js` is the Expo entry point. It loads required application-wide setup and renders the root
+`App.tsx` is the Expo entry point. It loads required application-wide setup and renders the root
 navigator. It should remain small and should not contain feature behavior.
 
 ### Application layer
@@ -83,10 +83,10 @@ configuration, or utilities used by multiple features.
 The intended dependency direction is:
 
 ```text
-App.js → src/app → src/features → feature API and components
+App.tsx → src/app → src/features → feature API and components
 ```
 
-- `App.js` may import from `src/app`.
+- `App.tsx` may import from `src/app`.
 - Application navigation may import feature screens.
 - A feature may import its own API modules and components.
 - Features should not import application navigation configuration.
@@ -104,7 +104,7 @@ App.js → src/app → src/features → feature API and components
 
 ## Styling
 
-NativeWind scans `App.js` and all supported source files below `src`. When source files move, the
+NativeWind scans `App.tsx` and all supported source files below `src`. When source files move, the
 `content` paths in `tailwind.config.js` must continue to include their new locations. After changing
 those paths, restart Expo with a clean Metro cache:
 
