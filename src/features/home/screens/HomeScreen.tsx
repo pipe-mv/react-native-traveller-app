@@ -1,19 +1,23 @@
+import { useLayoutEffect } from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { default as HerosImage } from '../../../../assets/heros.png'
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import * as Animatable from 'react-native-animatable'
+import { default as HerosImage } from '../../../../assets/heros.png'
 import Airplane from '../../../../assets/airplane.png'
+import type { RootStackParamList } from '../../../app/navigation/types'
+
+type HomeNavigation = NativeStackNavigationProp<RootStackParamList, 'Home'>
 
 const HomeScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<HomeNavigation>()
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     })
-  }, [])
+  }, [navigation])
 
   return (
     <SafeAreaView className="bg-white flex-1 relative">
@@ -22,7 +26,7 @@ const HomeScreen = () => {
         <View className="w-16 h-16 bg-black rounded-full items-center justify-center  mx-4">
           <Image
             source={Airplane}
-            title="Travel icons created by Freepik - Flaticon"
+            accessibilityLabel="Traveller airplane logo created by Freepik - Flaticon"
             style={{ width: 80, height: 80 }}
           />
         </View>
@@ -56,9 +60,9 @@ const HomeScreen = () => {
           className="absolute bottom-20 w-24 h-24 border-l-2 border-r-2 border-t-4 border-[#00BCC9] rounded-full items-center justify-center"
         >
           <Animatable.View
-            animation={'pulse'}
+            animation="pulse"
             easing="ease-in-out"
-            iterationCount={'infinite'}
+            iterationCount="infinite"
             className="w-20 h-20 items-center justify-center rounded-full bg-[#00BCC9]"
           >
             <Text className="text-gray-50 text-[36px] font-semibold">Go</Text>
