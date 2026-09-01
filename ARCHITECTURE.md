@@ -29,7 +29,7 @@ files. Expo Router remains a possible future improvement.
             │   └── placesApi.js
             ├── components/
             │   ├── CategorySelector.tsx
-            │   ├── PlaceBookingDetails.js
+            │   ├── PlaceBookingDetails.tsx
             │   ├── PlaceCard.js
             │   └── PlaceMarketInfo.js
             └── screens/
