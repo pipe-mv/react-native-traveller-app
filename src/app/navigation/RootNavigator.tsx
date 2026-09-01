@@ -5,8 +5,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import HomeScreen from '../../features/home/screens/HomeScreen'
 import DiscoverScreen from '../../features/places/screens/DiscoverScreen'
 import PlaceDetailsScreen from '../../features/places/screens/PlaceDetailsScreen'
+import type { RootStackParamList } from './types'
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function RootNavigator() {
   return (

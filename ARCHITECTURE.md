@@ -19,7 +19,7 @@ files. Expo Router remains a possible future improvement.
 └── src/
     ├── app/
     │   └── navigation/
-    │       ├── RootNavigator.js
+    │       ├── RootNavigator.tsx
     │       └── types.ts
     └── features/
         ├── home/
