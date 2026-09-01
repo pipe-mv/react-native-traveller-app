@@ -3,10 +3,17 @@ import { default as Hotels } from '../../../../assets/hotels.png'
 import { default as Attractions } from '../../../../assets/fair.png'
 import { default as Restaurants } from '../../../../assets/icon-restaurants.png'
 
-export default function CategorySelector({ setSearchType }) {
-  const handlePress = (type) => {
+type PlaceCategory = 'hotels' | 'attractions' | 'restaurants'
+
+type CategorySelectorProps = {
+  setSearchType: (category: PlaceCategory) => void
+}
+
+export default function CategorySelector({ setSearchType }: CategorySelectorProps) {
+  const handlePress = (type: PlaceCategory) => {
     setSearchType(type)
   }
+
   return (
     <View className="flex-row items-center justify-between px-4 mt-8">
       <TouchableOpacity onPress={() => handlePress('hotels')}>

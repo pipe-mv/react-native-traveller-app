@@ -6,9 +6,9 @@ Traveller is an Expo and React Native application organized by feature. The stru
 that changes for the same reason together while keeping application-wide configuration separate
 from feature behavior.
 
-The application currently uses JavaScript, React Navigation, NativeWind, and the Expo managed
-workflow. TypeScript and Expo Router are possible future improvements, but they are not part of
-the current architecture.
+The application uses React Navigation, NativeWind, and the Expo managed workflow. TypeScript is
+being introduced gradually while existing JavaScript files continue to work alongside converted
+files. Expo Router remains a possible future improvement.
 
 ## Directory structure
 
@@ -28,7 +28,7 @@ the current architecture.
             ├── api/
             │   └── placesApi.js
             ├── components/
-            │   ├── CategorySelector.js
+            │   ├── CategorySelector.tsx
             │   ├── PlaceBookingDetails.js
             │   ├── PlaceCard.js
             │   └── PlaceMarketInfo.js
@@ -125,7 +125,7 @@ keys, so confidential third-party requests should eventually pass through a cont
 
 Before preparing a pull request:
 
-1. Run the repository's TypeScript check when TypeScript is introduced.
+1. Run the TypeScript check with `npm run typecheck`.
 2. Run the automated test suite when tests are introduced.
 3. Export the production bundles for Android, iOS, and web.
 4. Test the main navigation and place-search flow on a simulator or physical device.
@@ -146,7 +146,7 @@ Architecture improvements should be implemented in small, behavior-preserving pu
 2. Add application-owned place models and isolate third-party response details in the API layer.
 3. Add loading, empty, and error components when they are reused.
 4. Introduce tests around API transformations and feature behavior.
-5. Introduce TypeScript gradually without combining it with unrelated behavior changes.
+5. Continue introducing TypeScript gradually without combining it with unrelated behavior changes.
 6. Evaluate Expo Router in a dedicated navigation migration if typed routes, universal links, and
    shareable place URLs become priorities.
 
