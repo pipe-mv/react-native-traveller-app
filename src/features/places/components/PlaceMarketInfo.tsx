@@ -1,8 +1,17 @@
 import { View, Text } from 'react-native'
-import React from 'react'
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 
-export default function PlaceMarketInfo({ rating, price_level, bearing }) {
+type PlaceMarketInfoProps = {
+  rating?: string | number | null
+  price_level?: string | null
+  bearing?: string | null
+}
+
+export default function PlaceMarketInfo({
+  rating,
+  price_level,
+  bearing,
+}: PlaceMarketInfoProps) {
   return (
     <View className="flex-row pt-6 justify-between">
       <View className="flex-row items-center space-x-2 ">
