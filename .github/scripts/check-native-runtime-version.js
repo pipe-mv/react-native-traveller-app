@@ -20,13 +20,16 @@ const nativeRuntimeDependencies = [
   'babel-preset-expo',
   'expo',
   'expo-font',
+  'expo-splash-screen',
   'expo-updates',
   'react',
   'react-dom',
   'react-native',
   'react-native-get-random-values',
+  'react-native-reanimated',
   'react-native-safe-area-context',
   'react-native-screens',
+  'react-native-worklets',
 ]
 
 const previousPackage = readJsonAtCommit(baseSha, 'package.json')
