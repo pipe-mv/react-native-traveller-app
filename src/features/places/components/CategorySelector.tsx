@@ -2,8 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { default as Hotels } from '../../../../assets/hotels.png'
 import { default as Attractions } from '../../../../assets/fair.png'
 import { default as Restaurants } from '../../../../assets/icon-restaurants.png'
-
-type PlaceCategory = 'hotels' | 'attractions' | 'restaurants'
+import type { PlaceCategory } from '../types/place'
 
 type CategorySelectorProps = {
   setSearchType: (category: PlaceCategory) => void
