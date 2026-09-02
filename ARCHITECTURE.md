@@ -27,7 +27,7 @@ files. Expo Router remains a possible future improvement.
         │       └── HomeScreen.tsx
         └── places/
             ├── api/
-            │   └── placesApi.js
+            │   └── placesApi.ts
             ├── components/
             │   ├── CategorySelector.tsx
             │   ├── PlaceBookingDetails.tsx
