@@ -36,7 +36,7 @@ files. Expo Router remains a possible future improvement.
             ├── types/
             │   └── place.ts
             └── screens/
-                ├── DiscoverScreen.js
+                ├── DiscoverScreen.tsx
                 └── PlaceDetailsScreen.js
 ```
 
