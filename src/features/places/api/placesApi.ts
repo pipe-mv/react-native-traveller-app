@@ -1,29 +1,25 @@
 import axios from 'axios'
 import type { AxiosRequestConfig } from 'axios'
 import { PLACES_DATA } from '@env'
+import type { SearchBounds } from '../types/geography'
 import type { Place, PlaceCategory } from '../types/place'
-
-type Coordinate = number | string | null | undefined
 
 type PlacesResponse = {
   data: Place[]
 }
 
 const options = (
-  bottomLeftLatitude: Coordinate,
-  bottomLeftLongitude: Coordinate,
-  topRightLatitude: Coordinate,
-  topRightLongitude: Coordinate,
+  bounds: SearchBounds,
   searchType: PlaceCategory
 ): AxiosRequestConfig => {
   return {
     method: 'GET',
     url: `https://travel-advisor.p.rapidapi.com/${searchType}/list-in-boundary`,
     params: {
-      tr_latitude: topRightLatitude ? topRightLatitude : '-37.51127',
-      tr_longitude: topRightLongitude ? topRightLongitude : '145.51252',
-      bl_latitude: bottomLeftLatitude ? bottomLeftLatitude : '-38.43385',
-      bl_longitude: bottomLeftLongitude ? bottomLeftLongitude : '144.5937',
+      tr_latitude: bounds.topRightLatitude ?? '-37.51127',
+      tr_longitude: bounds.topRightLongitude ?? '145.51252',
+      bl_latitude: bounds.bottomLeftLatitude ?? '-38.43385',
+      bl_longitude: bounds.bottomLeftLongitude ?? '144.5937',
       restaurant_tagcategory_standalone: '10591',
       restaurant_tagcategory: '10591',
       limit: '30',
@@ -40,17 +36,14 @@ const options = (
 }
 
 export const getPlacesData = async (
-  bottomLeftLatitude: Coordinate,
-  bottomLeftLongitude: Coordinate,
-  topRightLatitude: Coordinate,
-  topRightLongitude: Coordinate,
+  bounds: SearchBounds,
   searchType: PlaceCategory
 ): Promise<Place[] | undefined> => {
   try {
     const {
       data: { data },
     } = await axios.request<PlacesResponse>(
-      options(bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType)
+      options(bounds, searchType)
     )
     // console.log('api',data)
     return data
