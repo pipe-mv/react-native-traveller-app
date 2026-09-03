@@ -35,6 +35,7 @@ source files are written in TypeScript. Expo Router remains a possible future im
             ├── hooks/
             │   └── usePlacesSearch.ts
             ├── types/
+            │   ├── geography.ts
             │   └── place.ts
             └── screens/
                 ├── DiscoverScreen.tsx

@@ -1,23 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { getPlacesData } from '../api/placesApi'
+import type { SearchBounds, SearchViewport } from '../types/geography'
 import type { Place, PlaceCategory } from '../types/place'
-
-type Coordinate = {
-  lat?: number
-  lng?: number
-}
-
-type SearchViewport = {
-  northeast?: Coordinate
-  southwest?: Coordinate
-}
-
-type SearchBounds = {
-  topRightLatitude: number | null
-  topRightLongitude: number | null
-  bottomLeftLatitude: number | null
-  bottomLeftLongitude: number | null
-}
 
 const initialBounds: SearchBounds = {
   topRightLatitude: null,
@@ -48,13 +32,7 @@ export default function usePlacesSearch() {
       setIsLoading(true)
 
       try {
-        const data = await getPlacesData(
-          bounds.bottomLeftLatitude,
-          bounds.bottomLeftLongitude,
-          bounds.topRightLatitude,
-          bounds.topRightLongitude,
-          searchType
-        )
+        const data = await getPlacesData(bounds, searchType)
 
         if (isActive) {
           setPlaces(Array.isArray(data) ? data : [])
