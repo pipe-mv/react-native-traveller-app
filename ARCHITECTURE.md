@@ -32,6 +32,8 @@ source files are written in TypeScript. Expo Router remains a possible future im
             │   ├── PlaceBookingDetails.tsx
             │   ├── PlaceCard.tsx
             │   └── PlaceMarketInfo.tsx
+            ├── hooks/
+            │   └── usePlacesSearch.ts
             ├── types/
             │   └── place.ts
             └── screens/
@@ -115,6 +117,7 @@ npx expo start --clear
 
 - Keep short-lived interface state in the component that owns it.
 - Put reusable feature behavior in a feature hook when it becomes large enough to justify one.
+- `usePlacesSearch` owns place-search state, boundaries, loading, and request coordination.
 - Keep network requests in the feature's `api` directory.
 - Avoid adding a global state library until state is genuinely shared across unrelated screens.
 - Translate third-party API responses into application-owned models before allowing those models
@@ -144,12 +147,10 @@ Generated export output must not be committed.
 
 Architecture improvements should be implemented in small, behavior-preserving pull requests:
 
-1. Extract place-loading behavior from `DiscoverScreen` into a feature hook.
-2. Add application-owned place models and isolate third-party response details in the API layer.
-3. Add loading, empty, and error components when they are reused.
-4. Introduce tests around API transformations and feature behavior.
-5. Continue introducing TypeScript gradually without combining it with unrelated behavior changes.
-6. Evaluate Expo Router in a dedicated navigation migration if typed routes, universal links, and
+1. Add application-owned place models and isolate third-party response details in the API layer.
+2. Add loading, empty, and error components when they are reused.
+3. Introduce tests around API transformations and feature behavior.
+4. Evaluate Expo Router in a dedicated navigation migration if typed routes, universal links, and
    shareable place URLs become priorities.
 
 Do not add architectural layers or dependencies only because they may be useful someday. Add them

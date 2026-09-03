@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useLayoutEffect } from 'react'
 import {
   Text,
   View,
@@ -18,8 +18,7 @@ import { default as NotFound } from '../../../../assets/NotFound.png'
 import type { RootStackParamList } from '../../../app/navigation/types'
 import CategorySelector from '../components/CategorySelector'
 import PlaceCard from '../components/PlaceCard'
-import { getPlacesData } from '../api/placesApi'
-import type { Place, PlaceCategory } from '../types/place'
+import usePlacesSearch from '../hooks/usePlacesSearch'
 import { EXPO_PUBLIC_I_AM_TRAVELLER as I_AM_TRAVELLER } from '@env'
 
 type DiscoverNavigation = NativeStackNavigationProp<RootStackParamList, 'Discover'>
@@ -29,13 +28,7 @@ const avatar = `https://randomuser.me/api/portraits/women/${randomnumber}.jpg`
 
 const DiscoverScreen = () => {
   const navigation = useNavigation<DiscoverNavigation>()
-  const [isLoading, setIsLoading] = useState(false)
-  const [mainData, setMainData] = useState<Place[]>([])
-  const [topRightLatitude, setTopRightLatitude] = useState<number | null>(null)
-  const [topRightLongitude, setTopRightLongitude] = useState<number | null>(null)
-  const [bottomLeftLatitude, setBottomLeftLatitude] = useState<number | null>(null)
-  const [bottomLeftLongitude, setBottomLeftLongitude] = useState<number | null>(null)
-  const [searchType, setSearchType] = useState<PlaceCategory>('restaurants')
+  const { isLoading, places, setSearchType, setSearchViewport } = usePlacesSearch()
 
   //   If there are changes in the UI it re-renders the entire UI
   useLayoutEffect(() => {
@@ -43,39 +36,6 @@ const DiscoverScreen = () => {
       headerShown: false,
     })
   }, [navigation])
-
-  //   Re-render the component once it changes
-  useEffect(() => {
-    let isActive = true
-
-    const loadPlaces = async () => {
-      setIsLoading(true)
-
-      try {
-        const data = await getPlacesData(
-          bottomLeftLatitude,
-          bottomLeftLongitude,
-          topRightLatitude,
-          topRightLongitude,
-          searchType
-        )
-
-        if (isActive) {
-          setMainData(Array.isArray(data) ? data : [])
-        }
-      } finally {
-        if (isActive) {
-          setIsLoading(false)
-        }
-      }
-    }
-
-    loadPlaces()
-
-    return () => {
-      isActive = false
-    }
-  }, [bottomLeftLatitude, bottomLeftLongitude, topRightLatitude, topRightLongitude, searchType])
 
   return (
     <SafeAreaView>
@@ -104,10 +64,7 @@ const DiscoverScreen = () => {
               console.log('Selected place:', data)
               console.log('Details:', details) // this now contains the geometry
 
-              setBottomLeftLatitude(details?.geometry?.viewport?.southwest?.lat ?? null)
-              setBottomLeftLongitude(details?.geometry?.viewport?.southwest?.lng ?? null)
-              setTopRightLatitude(details?.geometry?.viewport?.northeast?.lat ?? null)
-              setTopRightLongitude(details?.geometry?.viewport?.northeast?.lng ?? null)
+              setSearchViewport(details?.geometry?.viewport)
             }}
             query={{
               key: I_AM_TRAVELLER,
@@ -147,10 +104,10 @@ const DiscoverScreen = () => {
         <View className="">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
-      ) : mainData.length > 0 ? (
+      ) : places.length > 0 ? (
         <FlatList
           numColumns={2}
-          data={mainData}
+          data={places}
           keyExtractor={(place, index) => `${place.location_id ?? 'place'}-${index}`}
           renderItem={({ item, index }) => <PlaceCard cardData={item} index={index} />}
         />
