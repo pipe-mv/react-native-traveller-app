@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import { useLayoutEffect } from 'react'
 import {
   View,
@@ -9,12 +8,15 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons'
+import type { NativeStackScreenProps } from '@react-navigation/native-stack'
+import type { RootStackParamList } from '../../../app/navigation/types'
 import PlaceMarketInfo from '../components/PlaceMarketInfo'
 import PlaceBookingDetails from '../components/PlaceBookingDetails'
 
-const PlaceDetailsScreen = ({ route }) => {
-  const navigation = useNavigation()
-  const { param: cardData, index } = route?.params
+type PlaceDetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'ItemScreen'>
+
+const PlaceDetailsScreen = ({ navigation, route }: PlaceDetailsScreenProps) => {
+  const { param: cardData } = route.params
   const image = cardData?.photo?.images?.medium?.url
     ? cardData?.photo?.images?.medium?.url
     : 'https://cdn.pixabay.com/photo/2015/10/30/12/22/eat-1014025_1280.jpg'
@@ -33,11 +35,13 @@ const PlaceDetailsScreen = ({ route }) => {
     email,
     address,
   } = cardData
+  const location = location_string ?? ''
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     })
-  }, [])
+  }, [navigation])
 
   return (
     <SafeAreaView className="flex-1 ">
@@ -74,7 +78,7 @@ const PlaceDetailsScreen = ({ route }) => {
             <FontAwesome5 name="map-marker-alt" size={25} color="black" />
             <Text className="text-[#8C9EA6] text-[20px] font-bold">
               {' '}
-              {location_string?.length > 30 ? `${location_string.slice(0, 30)}..` : location_string}
+              {location.length > 30 ? `${location.slice(0, 30)}..` : location}
             </Text>
           </View>
         </View>

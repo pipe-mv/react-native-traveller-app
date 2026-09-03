@@ -6,9 +6,8 @@ Traveller is an Expo and React Native application organized by feature. The stru
 that changes for the same reason together while keeping application-wide configuration separate
 from feature behavior.
 
-The application uses React Navigation, NativeWind, and the Expo managed workflow. TypeScript is
-being introduced gradually while existing JavaScript files continue to work alongside converted
-files. Expo Router remains a possible future improvement.
+The application uses React Navigation, NativeWind, and the Expo managed workflow. Application
+source files are written in TypeScript. Expo Router remains a possible future improvement.
 
 ## Directory structure
 
@@ -37,7 +36,7 @@ files. Expo Router remains a possible future improvement.
             │   └── place.ts
             └── screens/
                 ├── DiscoverScreen.tsx
-                └── PlaceDetailsScreen.js
+                └── PlaceDetailsScreen.tsx
 ```
 
 ## Responsibilities
@@ -50,7 +49,7 @@ navigator. It should remain small and should not contain feature behavior.
 ### Application layer
 
 `src/app` contains configuration that connects the whole application. At present,
-`RootNavigator.js` owns the React Navigation container, stack navigator, safe-area provider, and
+`RootNavigator.tsx` owns the React Navigation container, stack navigator, safe-area provider, and
 screen registration.
 
 Navigation route names are part of the application's internal contract. Renaming a screen file
