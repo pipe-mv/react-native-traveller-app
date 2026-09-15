@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import * as Animatable from 'react-native-animatable'
 import { default as HerosImage } from '../../../../assets/heros.png'
-import Airplane from '../../../../assets/airplane.png'
+import Airplane from '../../../../assets/airplane-1024.png'
 import type { RootStackParamList } from '../../../app/navigation/types'
 import { useHomeScreenStyles } from './HomeScreen.styles'
 

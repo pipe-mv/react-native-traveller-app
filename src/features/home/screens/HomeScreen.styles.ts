@@ -10,7 +10,6 @@ export function useHomeScreenStyles() {
   const buttonSize = isCompact ? 76 : 96
   const buttonInnerSize = isCompact ? 64 : 80
 
-  console.log({width, height})
   return StyleSheet.create({
     header: {
       gap: isCompact ? 12 : 16,
