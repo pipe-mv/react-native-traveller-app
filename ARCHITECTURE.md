@@ -20,26 +20,27 @@ source files are written in TypeScript. Expo Router remains a possible future im
     │   └── navigation/
     │       ├── RootNavigator.tsx
     │       └── types.ts
-    └── features/
-        ├── home/
-        │   └── screens/
-        │       └── HomeScreen.tsx
-        └── places/
-            ├── api/
-            │   └── placesApi.ts
-            ├── components/
-            │   ├── CategorySelector.tsx
-            │   ├── PlaceBookingDetails.tsx
-            │   ├── PlaceCard.tsx
-            │   └── PlaceMarketInfo.tsx
-            ├── hooks/
-            │   └── usePlacesSearch.ts
-            ├── types/
-            │   ├── geography.ts
-            │   └── place.ts
-            └── screens/
-                ├── DiscoverScreen.tsx
-                └── PlaceDetailsScreen.tsx
+    ├── features/
+    │   ├── home/
+    │   │   └── screens/
+    │   │       ├── HomeScreen.styles.ts
+    │   │       └── HomeScreen.tsx
+    │   └── places/
+    │       ├── api/
+    │       │   └── placesApi.ts
+    │       ├── components/
+    │       │   ├── CategorySelector.tsx
+    │       │   ├── PlaceBookingDetails.tsx
+    │       │   ├── PlaceCard.tsx
+    │       │   └── PlaceMarketInfo.tsx
+    │       ├── hooks/
+    │       │   └── usePlacesSearch.ts
+    │       ├── types/
+    │       │   ├── geography.ts
+    │       │   └── place.ts
+    │       └── screens/
+    │           ├── DiscoverScreen.tsx
+    │           └── PlaceDetailsScreen.tsx
 ```
 
 ## Responsibilities
@@ -105,6 +106,41 @@ App.tsx → src/app → src/features → feature API and components
   detail.
 
 ## Styling
+
+### Screen and style responsibilities
+
+Screens should keep their content, component structure, navigation, interaction, and other behavior
+easy to see. When a screen has enough responsive styling to obscure that structure, place those
+styles in a colocated file named after the screen:
+
+```text
+screens/
+├── HomeScreen.tsx
+└── HomeScreen.styles.ts
+```
+
+For this pair, the responsibilities are:
+
+1. `HomeScreen.tsx` describes content, navigation, animation, and interaction.
+2. `HomeScreen.styles.ts` obtains the window dimensions and owns Home-specific responsive layout
+   calculations.
+
+Use NativeWind's `className` for stable styles whose values do not depend on the device, such as
+flex direction, alignment, colors, borders, and positioning behavior:
+
+```tsx
+<View className="flex-row items-center" style={styles.header}>
+```
+
+Use the colocated style file for calculated or conditional values that depend on the available
+width or height, such as responsive spacing, font sizes, image dimensions, and offsets. The screen
+should refer to those values by meaningful names such as `styles.header` or `styles.heroImage`
+instead of containing the calculations inline.
+
+Do not create a separate style file automatically for every component. Keep simple, static styles
+with their component; extract a colocated style file when responsive calculations or numerous
+inline style objects make the component difficult to read. Keep feature-specific styles inside
+their feature rather than moving them into a global shared directory.
 
 NativeWind scans `App.tsx` and all supported source files below `src`. When source files move, the
 `content` paths in `tailwind.config.js` must continue to include their new locations. After changing
