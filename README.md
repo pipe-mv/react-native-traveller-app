@@ -50,11 +50,6 @@ Scan the fresh QR code displayed by Expo. This QR code points to the current loc
 server and stops working when that server is no longer available, so it should not be saved in the
 repository.
 
-To open a published version, sign in to the appropriate Expo account and select the latest
-compatible Traveller update. A specific EAS Update can also be opened with **Preview** from its
-update page on expo.dev. EAS preview QR codes are tied to a particular update and runtime, so they
-are not permanent application links and should not be placed in this README.
-
 ### "Notes"
 
 The application could not run very smooth due to the features of the API used for this development.
