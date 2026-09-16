@@ -30,19 +30,30 @@ Once you click any of the listing places that are loaded in the screen you can f
 <img src='./assets/MarkDown/ItemScreen-2.png' width=200 > 
 </p>
 
-## This apllication is on the palm of your hands!
+## Run the application on your phone
 
-You just need to scam this QR Code on your phone and it will take you to the App store where you will download the simulator application Expo Go.
+Scan this QR code to open the App Store and install Expo Go. The installed Expo client must support
+the SDK version used by this project.
 
 <p align="center" gap='20px'>
 <img src='./assets/MarkDown/ExpoGoApplication-QR-Code.png' width=200 >
 </p>
 
-Then You need to scam the next QR Code and it will take you to the Expo Go application where you can explore and interact with the Traveller application and all the features that the application offers.
+Install the project dependencies and start the local Expo development server:
 
-<p align="center" gap='20px'>
-<img src='./assets/MarkDown/TravellerApp-QR-Code.svg' width=200 >
-</p>
+```bash
+npm ci
+npx expo start
+```
+
+Scan the fresh QR code displayed by Expo. This QR code points to the current local development
+server and stops working when that server is no longer available, so it should not be saved in the
+repository.
+
+To open a published version, sign in to the appropriate Expo account and select the latest
+compatible Traveller update. A specific EAS Update can also be opened with **Preview** from its
+update page on expo.dev. EAS preview QR codes are tied to a particular update and runtime, so they
+are not permanent application links and should not be placed in this README.
 
 ### "Notes"
 
